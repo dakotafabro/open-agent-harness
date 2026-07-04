@@ -16,10 +16,10 @@ Use package name: create-agent-harness
 Bun can consume npm packages directly.
 
 Install:
-- bun create agent-harness@latest my-harness
+- bun create @dakotafabro/agent-harness my-harness
 
 If needed, also validate with:
-- bunx create-agent-harness my-harness
+- bunx @dakotafabro/create-agent-harness my-harness
 
 ## Release checklist
 - update version

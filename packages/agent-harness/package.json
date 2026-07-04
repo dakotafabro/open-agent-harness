@@ -1,5 +1,5 @@
 {
-  "name": "agent-harness",
+  "name": "@dakotafabro/agent-harness",
   "version": "0.1.0",
   "description": "Run and validate a growth-first agent harness project",
   "type": "module",
@@ -20,5 +20,8 @@
   "files": [
     "bin",
     "README.md"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

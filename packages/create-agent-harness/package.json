@@ -1,5 +1,5 @@
 {
-  "name": "create-agent-harness",
+  "name": "@dakotafabro/create-agent-harness",
   "version": "0.1.0",
   "description": "Scaffold a growth-first agent harness project",
   "type": "module",
@@ -20,5 +20,8 @@
     "bin",
     "templates",
     "README.md"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
