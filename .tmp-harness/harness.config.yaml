@@ -1,0 +1,11 @@
+version: 0.1
+runtime: goose
+profile: team-default
+default_workflow: build
+required_validations:
+  - workflow-schema
+  - model-routing-policy
+  - required-artifacts
+artifacts:
+  summary: harness/memory/run-summary.md
+  reflection: harness/memory/reflection.md

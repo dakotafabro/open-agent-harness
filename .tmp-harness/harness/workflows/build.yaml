@@ -1,0 +1,13 @@
+name: build
+phases:
+  - name: orient
+    outputs: [task-intent, scope]
+  - name: design
+    outputs: [plan, risk-check]
+  - name: implement
+    outputs: [changeset]
+  - name: verify
+    gates: [lint, tests, conventions]
+    outputs: [verification-result]
+  - name: ship-ready
+    outputs: [pr-summary, testing-strategy]

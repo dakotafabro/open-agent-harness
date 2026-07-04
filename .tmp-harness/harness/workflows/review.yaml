@@ -1,0 +1,9 @@
+name: review
+phases:
+  - name: intent-check
+    outputs: [design-intent-summary]
+  - name: quality-check
+    gates: [tests, conventions, readability]
+    outputs: [review-findings]
+  - name: decision
+    outputs: [ready-for-rerun-or-ship]

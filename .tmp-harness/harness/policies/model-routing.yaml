@@ -1,0 +1,12 @@
+version: 0.1
+machine_policy:
+  work: claude
+  personal: codex
+  unknown: claude
+task_defaults:
+  implementation: repo-default
+  review: repo-default
+  docs: repo-default
+enforcement:
+  allow_only_machine_default: true
+  fail_on_ambiguous_machine: false

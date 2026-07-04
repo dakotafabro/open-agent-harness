@@ -1,0 +1,24 @@
+{
+  "name": "create-agent-harness",
+  "version": "0.1.0",
+  "description": "Scaffold a growth-first agent harness project",
+  "type": "module",
+  "bin": {
+    "create-agent-harness": "bin/create-agent-harness.js"
+  },
+  "keywords": [
+    "agent",
+    "harness",
+    "goose",
+    "scaffold"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin",
+    "templates",
+    "README.md"
+  ]
+}
