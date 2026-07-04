@@ -10,5 +10,5 @@ Works with Goose.
 - adapt policies and workflows to your team profile
 
 ## Commands
-- validate: agent-harness validate
-- run build: agent-harness run build
+- validate: npx agent-harness validate
+- run build: npx agent-harness run build

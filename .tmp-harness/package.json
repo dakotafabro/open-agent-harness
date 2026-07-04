@@ -1,0 +1,8 @@
+{
+  "name": "agent-harness-project",
+  "private": true,
+  "scripts": {
+    "harness:validate": "npx agent-harness validate",
+    "harness:run": "npx agent-harness run build"
+  }
+}

@@ -8,6 +8,16 @@ const nameArg = args.find((a) => !a.startsWith('--')) || 'agent-harness-project'
 const projectDir = path.resolve(process.cwd(), nameArg);
 
 const files = {
+  'package.json': [
+    '{',
+    '  "name": "agent-harness-project",',
+    '  "private": true,',
+    '  "scripts": {',
+    '    "harness:validate": "npx agent-harness validate",',
+    '    "harness:run": "npx agent-harness run build"',
+    '  }',
+    '}',
+  ].join('\n'),
   'README.md': [
     '# Agent Harness Project',
     '',
@@ -21,8 +31,8 @@ const files = {
     '- adapt policies and workflows to your team profile',
     '',
     '## Commands',
-    '- validate: agent-harness validate',
-    '- run build: agent-harness run build'
+    '- validate: npx agent-harness validate',
+    '- run build: npx agent-harness run build'
   ].join('\n'),
   'AGENTS.md': [
     '# AGENTS.md',

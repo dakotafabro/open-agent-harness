@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.1.0",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/agent-harness"
   ],
   "scripts": {
     "test:create": "node packages/create-agent-harness/bin/create-agent-harness.js .tmp-harness --yes",
