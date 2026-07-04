@@ -5,6 +5,6 @@ Scaffold a growth-first agent harness project.
 Works with Goose.
 
 ## Usage
-- npx @dakotafabro/create-agent-harness my-harness
-- npm create @dakotafabro/agent-harness my-harness
-- bun create @dakotafabro/agent-harness my-harness
+- npx @dakotafabrodev/create-agent-harness my-harness
+- npm create @dakotafabrodev/agent-harness my-harness
+- bun create @dakotafabrodev/agent-harness my-harness

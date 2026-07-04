@@ -1,5 +1,5 @@
 {
-  "name": "@dakotafabro/agent-harness",
+  "name": "@dakotafabrodev/agent-harness",
   "version": "0.1.0",
   "description": "Run and validate a growth-first agent harness project",
   "type": "module",

@@ -9,10 +9,10 @@ Works with Goose.
 
 ## Install
 npm:
-- npm create @dakotafabro/agent-harness my-harness
+- npm create @dakotafabrodev/agent-harness my-harness
 
 bun:
-- bun create @dakotafabro/agent-harness my-harness
+- bun create @dakotafabrodev/agent-harness my-harness
 
 ## Focus
 - collaboration maturity
