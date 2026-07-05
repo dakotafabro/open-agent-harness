@@ -44,3 +44,19 @@ Optional create aliases:
 
 ## Design boundary
 The framework provides a reusable frame. It does not ship a personal workflow. Teams define their own profile, tools, and conventions.
+
+## Package model
+There are two npm packages and they are designed to work together.
+
+- @dakotafabrodev/create-agent-harness
+  - Purpose: scaffold a new harness project
+  - Usage stage: one-time project setup
+
+- @dakotafabrodev/agent-harness
+  - Purpose: validate and run workflows inside an existing scaffold
+  - Usage stage: ongoing daily use
+
+Typical flow:
+1. Scaffold once with create-agent-harness
+2. Customize contracts
+3. Run validate and run commands with agent-harness

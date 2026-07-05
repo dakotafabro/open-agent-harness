@@ -14,3 +14,11 @@ Yes. The model is to fail earlier through local validation and explicit workflow
 
 ## Does this force one model provider?
 No. Policy contracts define routing rules for each environment.
+
+## Do the two packages work together?
+Yes. They are intentionally paired.
+
+- create-agent-harness creates the project structure and starter contracts.
+- agent-harness validates and runs those contracts after scaffold.
+
+Use create once, then use agent-harness for ongoing operations.

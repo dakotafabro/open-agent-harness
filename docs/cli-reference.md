@@ -11,3 +11,9 @@
 - npx @dakotafabrodev/agent-harness run review --phase quality-check
 
 Validate checks structure. Strict checks placeholder replacement. Run executes commands in workflow phases.
+
+## Two-package model
+- @dakotafabrodev/create-agent-harness is the scaffold package.
+- @dakotafabrodev/agent-harness is the operations package.
+
+They work together in sequence: scaffold first, then validate and run.

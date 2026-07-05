@@ -35,3 +35,17 @@ Use:
 - run validation before deep generation
 - keep each run scoped to one clear goal
 - reuse stable patterns through contracts, not prompt history
+
+## Package sequence
+Use the packages in this order:
+
+1. Create a project scaffold
+- npx @dakotafabrodev/create-agent-harness my-harness
+
+2. Move into the project
+- cd my-harness
+
+3. Validate and run workflows
+- npx @dakotafabrodev/agent-harness validate
+- npx @dakotafabrodev/agent-harness validate --strict
+- npx @dakotafabrodev/agent-harness run build
