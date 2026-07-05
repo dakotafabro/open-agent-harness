@@ -1,17 +1,18 @@
 {
   "name": "@dakotafabrodev/agent-harness",
-  "version": "0.1.2",
-  "description": "Run and validate a growth-first agent harness project",
+  "version": "0.1.3",
+  "description": "Validate and run growth-first agent harness workflows with baseline and strict checks, executable phase commands, and CI-friendly exits.",
   "type": "module",
   "bin": {
     "agent-harness": "bin/agent-harness.js"
   },
   "keywords": [
     "agent",
-    "harness",
+    "agents-md",
     "goose",
-    "workflow",
-    "validation"
+    "harness",
+    "validation",
+    "workflow"
   ],
   "license": "MIT",
   "engines": {

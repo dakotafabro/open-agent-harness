@@ -1,16 +1,19 @@
 {
   "name": "@dakotafabrodev/create-agent-harness",
-  "version": "0.1.2",
-  "description": "Scaffold a growth-first agent harness project",
+  "version": "0.1.3",
+  "description": "Create a growth-first Goose-compatible agent harness scaffold with team-owned contracts, strict readiness checks, and guided setup.",
   "type": "module",
   "bin": {
     "create-agent-harness": "bin/create-agent-harness.js"
   },
   "keywords": [
     "agent",
-    "harness",
+    "agents-md",
     "goose",
-    "scaffold"
+    "harness",
+    "maturity",
+    "scaffold",
+    "workflow"
   ],
   "license": "MIT",
   "engines": {

@@ -1,13 +1,14 @@
 {
   "name": "open-agent-harness",
   "private": true,
-  "version": "0.1.2",
+  "version": "0.1.3",
   "workspaces": [
     "packages/*",
     "packages/agent-harness"
   ],
   "scripts": {
     "test:create": "node packages/create-agent-harness/bin/create-agent-harness.js .tmp-harness --yes",
-    "clean:test": "rm -rf .tmp-harness"
+    "clean:test": "rm -rf .tmp-harness",
+    "test:smoke": "node scripts/smoke-test.mjs"
   }
 }
