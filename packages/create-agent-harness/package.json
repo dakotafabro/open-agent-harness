@@ -1,6 +1,6 @@
 {
   "name": "@dakotafabrodev/create-agent-harness",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scaffold a growth-first agent harness project",
   "type": "module",
   "bin": {

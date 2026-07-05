@@ -8,16 +8,6 @@ const nameArg = args.find((a) => !a.startsWith('--')) || 'agent-harness-project'
 const projectDir = path.resolve(process.cwd(), nameArg);
 
 const files = {
-  'package.json': [
-    '{',
-    '  "name": "agent-harness-project",',
-    '  "private": true,',
-    '  "scripts": {',
-    '    "harness:validate": "npx agent-harness validate",',
-    '    "harness:run": "npx agent-harness run build"',
-    '  }',
-    '}',
-  ].join('\n'),
   'README.md': [
     '# Agent Harness Project',
     '',
@@ -26,13 +16,41 @@ const files = {
     'Works with Goose.',
     '',
     '## Start',
+    '- read SETUP.md',
     '- review AGENTS.md',
     '- review harness.config.yaml',
     '- adapt policies and workflows to your team profile',
     '',
     '## Commands',
-    '- validate: npx agent-harness validate',
-    '- run build: npx agent-harness run build'
+    '- validate: npx @dakotafabrodev/agent-harness validate',
+    '- run build: npx @dakotafabrodev/agent-harness run build'
+  ].join('\n'),
+  'SETUP.md': [
+    '# Setup Guide',
+    '',
+    'Use this order to customize the scaffold for your team.',
+    '',
+    '1. Edit AGENTS.md',
+    '- set machine routing defaults',
+    '- confirm safe fallback behavior',
+    '',
+    '2. Edit harness/policies/model-routing.yaml',
+    '- map environments to preferred model providers',
+    '- keep unknown fallback strict and safe',
+    '',
+    '3. Edit harness/workflows/build.yaml and review.yaml',
+    '- update phases to match your delivery flow',
+    '- define gates that reflect your quality standards',
+    '',
+    '4. Edit harness/context/project-context.md',
+    '- define architecture boundaries and release requirements',
+    '',
+    '5. Run commands',
+    '- npx @dakotafabrodev/agent-harness validate',
+    '- npx @dakotafabrodev/agent-harness run build',
+    '',
+    '6. Capture reflection',
+    '- record what improved quality and what should be promoted to conventions'
   ].join('\n'),
   'AGENTS.md': [
     '# AGENTS.md',
@@ -50,8 +68,10 @@ const files = {
     '- validate before deep generation',
     '- fail safe to work policy on ambiguity',
     '',
-    '## Constraint',
-    'This file should stay generic and team-owned. Do not encode personal workflow details.'
+    '## Customize this file',
+    '- replace defaults with your team routing policy',
+    '- keep this file generic and team-owned',
+    '- do not encode personal workflow details'
   ].join('\n'),
   'harness.config.yaml': [
     'version: 0.1',
@@ -65,6 +85,82 @@ const files = {
     'artifacts:',
     '  summary: harness/memory/run-summary.md',
     '  reflection: harness/memory/reflection.md'
+  ].join('\n'),
+  'harness/README.md': [
+    '# Harness Folder',
+    '',
+    'This directory holds contracts your team customizes.',
+    '',
+    '## What to edit first',
+    '- policies/model-routing.yaml',
+    '- workflows/build.yaml',
+    '- workflows/review.yaml',
+    '- context/project-context.md',
+    '',
+    '## Validation flow',
+    '- run validate after changes',
+    '- run a workflow after validation passes',
+    '',
+    '## Goal',
+    'Keep behavior explicit, reviewable, and reusable.'
+  ].join('\n'),
+  'harness/policies/README.md': [
+    '# Policies',
+    '',
+    'Define safe, explicit model routing behavior.',
+    '',
+    '## model-routing.yaml guidance',
+    '- set machine policies for work, personal, and unknown',
+    '- set task defaults that match your team operating model',
+    '- keep ambiguous cases safe by default',
+    '',
+    '## Validation checks',
+    '- values are valid and intentional',
+    '- fallback behavior is defined',
+    '- policy reflects team environment constraints'
+  ].join('\n'),
+  'harness/workflows/README.md': [
+    '# Workflows',
+    '',
+    'Define phase-based execution and quality gates.',
+    '',
+    '## Editing guidance',
+    '- each phase should have clear outputs',
+    '- verify phase should include quality gates',
+    '- keep workflows scoped and readable',
+    '',
+    '## Recommended minimum gates',
+    '- lint',
+    '- tests',
+    '- conventions'
+  ].join('\n'),
+  'harness/context/README.md': [
+    '# Context',
+    '',
+    'Store high-signal context for reliable execution.',
+    '',
+    '## Include',
+    '- architecture boundaries',
+    '- domain constraints',
+    '- team conventions',
+    '- release expectations',
+    '',
+    '## Keep out',
+    '- temporary notes that should live in memory logs',
+    '- personal workflow details that are not team standards'
+  ].join('\n'),
+  'harness/memory/README.md': [
+    '# Memory',
+    '',
+    'Capture execution outcomes and reflection signals.',
+    '',
+    '## session-log.md',
+    '- track date, task, and outcome',
+    '',
+    '## reflection.md',
+    '- record what improved quality',
+    '- record what prevented rework',
+    '- record what should be promoted into conventions'
   ].join('\n'),
   'harness/policies/model-routing.yaml': [
     'version: 0.1',
@@ -146,5 +242,6 @@ for (const [rel, content] of Object.entries(files)) {
 console.log('Created project at:', projectDir);
 console.log('Next steps:');
 console.log('1) cd', projectDir);
-console.log('2) Review AGENTS.md and harness config');
-console.log('3) Tailor workflows and policies to your team profile');
+console.log('2) Read SETUP.md');
+console.log('3) Tailor AGENTS and harness contracts to your team profile');
+console.log('4) Run: npx @dakotafabrodev/agent-harness validate');

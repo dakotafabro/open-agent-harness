@@ -1,29 +1,24 @@
 # Publishing Plan
 
-## Package to publish
-- create-agent-harness
+## Published packages
+- @dakotafabrodev/create-agent-harness
+- @dakotafabrodev/agent-harness
 
-## Naming
-Use package name: create-agent-harness
+## Install
+Scaffold with:
+- npx @dakotafabrodev/create-agent-harness my-harness
 
-## npm publish
-1. cd packages/create-agent-harness
-2. npm login
-3. npm version patch
-4. npm publish --access public
-
-## bun compatibility
-Bun can consume npm packages directly.
-
-Install:
+Optional create aliases:
+- npm create @dakotafabrodev/agent-harness my-harness
 - bun create @dakotafabrodev/agent-harness my-harness
 
-If needed, also validate with:
-- bunx @dakotafabrodev/create-agent-harness my-harness
-
 ## Release checklist
-- update version
-- run scaffold smoke test
-- verify generated files contain no personal details
-- verify README includes Works with Goose
-- publish
+1. bump version in package.json
+2. run scaffold smoke test
+3. verify generated files contain no personal details
+4. verify docs include Works with Goose
+5. publish to npm with public access
+
+## Publish commands
+From each package directory:
+- npm publish --access public

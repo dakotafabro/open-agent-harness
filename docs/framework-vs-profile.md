@@ -1,17 +1,17 @@
 # Framework vs Profile
 
 ## Framework layer
-The frame includes:
-- maturity dimensions
-- mechanisms
+Shared frame that defines:
 - contracts
+- maturity dimensions
+- execution mechanisms
 - validation model
 
 ## Profile layer
-The implementation includes:
+Team-owned implementation details:
 - workflow shape
-- tooling choices
-- coding standards
+- toolchain
+- coding conventions
 - release requirements
 
-The framework should not encode one individual's personal workflow.
+The framework is intentionally generic. It should not encode personal workflow details.

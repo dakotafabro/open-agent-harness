@@ -1,9 +1,10 @@
-# agent-harness
+# @dakotafabrodev/agent-harness
 
-Validate and run harness workflows.
+CLI for validating and running harness workflows.
 
 Works with Goose.
 
 ## Usage
-- agent-harness validate
-- agent-harness run build
+- npx @dakotafabrodev/agent-harness validate
+- npx @dakotafabrodev/agent-harness run build
+- npx @dakotafabrodev/agent-harness run review

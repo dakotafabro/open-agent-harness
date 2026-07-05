@@ -1,21 +1,37 @@
 # Quickstart
 
-1) Define your profile
-- team conventions
-- workflow phases
-- validation gates
+## 1) Scaffold a project
+- npx @dakotafabrodev/create-agent-harness my-harness
+- cd my-harness
+
+## 2) Review generated contracts
+- AGENTS.md
+- harness.config.yaml
+- harness/policies/model-routing.yaml
+- harness/workflows/build.yaml
+
+## 3) Adapt profile to your team
+Update these first:
+- model routing policy
+- workflow phases and gates
+- validation checks
 - reflection artifact format
 
-2) Add routing policy
-- machine policy
-- task policy
-- fallback behavior
+## 4) Validate and run
+- npx @dakotafabrodev/agent-harness validate
+- npx @dakotafabrodev/agent-harness run build
 
-3) Validate before execution
-Run validation before large generation steps to reduce rework and cost.
+## 5) Capture evidence from first run
+Record a short run log:
+- what validation caught
+- what changed before review
+- which convention checks passed
 
-4) Execute bounded workflows
-Run one scoped workflow at a time.
+Use:
+- docs/pilot-metrics-template.md
+- docs/evidence-pack.md
 
-5) Reflect and promote
-Capture what improved collaboration quality and promote reusable patterns into contracts.
+## 6) Keep costs low and quality high
+- run validation before deep generation
+- keep each run scoped to one clear goal
+- reuse stable patterns through contracts, not prompt history

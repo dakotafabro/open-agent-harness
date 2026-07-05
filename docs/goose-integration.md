@@ -3,11 +3,17 @@
 Open Agent Harness works with Goose as a first runtime target.
 
 ## Integration model
-- Harness manages contracts, policy, and quality gates.
-- Goose executes work through model and tool access.
-- Reflection and validation artifacts are captured by harness workflows.
+- Harness manages contracts, policy, validation gates, and reflection artifacts
+- Goose executes tasks with model and tool access
+- Teams can keep existing AGENTS.md and evolve it into policy contracts
 
 ## Why Goose first
 - practical runtime ergonomics
-- flexible tool integration
-- strong fit for repo and workflow execution
+- repo-level execution flow
+- extensible tool surface
+
+## Migration path
+1. keep current AGENTS.md
+2. add harness contracts incrementally
+3. run validate in local workflow
+4. add harness checks into CI
