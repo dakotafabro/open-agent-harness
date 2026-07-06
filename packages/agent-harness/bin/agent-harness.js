@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
+import { reportOutcome } from '../lib/otel-reporter.js';
 
 const cwd = process.cwd();
 const args = process.argv.slice(2);
@@ -11,7 +12,11 @@ function hasFlag(flag) { return args.includes(flag); }
 function getOption(name) { const i = args.indexOf(name); return i === -1 ? null : (args[i + 1] ?? null); }
 function exists(rel) { return fs.existsSync(path.join(cwd, rel)); }
 function read(rel) { return fs.readFileSync(path.join(cwd, rel), 'utf8'); }
-function fail(message, code = 1) { console.error(message); process.exit(code); }
+async function fail(message, code = 1, meta = {}) {
+  console.error(message);
+  await reportOutcome({ status: 'fail', message, exitCode: code, ...meta });
+  process.exit(code);
+}
 
 const requiredFiles = [
   'AGENTS.md',
@@ -27,10 +32,10 @@ function expectContains(text, pattern, label, failures) {
   if (!pattern.test(text)) failures.push('- ' + label);
 }
 
-function baselineValidation() {
+async function baselineValidation() {
   const missing = requiredFiles.filter((f) => !exists(f));
   if (missing.length > 0) {
-    fail('Validation failed. Missing required files:\n- ' + missing.join('\n- '));
+    await fail('Validation failed. Missing required files:\n- ' + missing.join('\n- '), 1, { command: 'validate' });
   }
 
   const config = read('harness.config.yaml');
@@ -63,10 +68,10 @@ function baselineValidation() {
 
   if (!agents.toLowerCase().includes('machine')) failures.push('- AGENTS.md includes machine routing policy');
 
-  if (failures.length > 0) fail('Validation failed.\n' + failures.join('\n'));
+  if (failures.length > 0) await fail('Validation failed.\n' + failures.join('\n'), 1, { command: 'validate' });
 }
 
-function strictValidation() {
+async function strictValidation() {
   const markers = [
     ['harness.config.yaml', 'replace-with-team-profile'],
     ['harness/policies/model-routing.yaml', 'replace-with-work-model'],
@@ -86,7 +91,7 @@ function strictValidation() {
   if (!exists('AI_PROMPT.md')) unresolved.push('- AI_PROMPT.md missing');
 
   if (unresolved.length > 0) {
-    fail('Strict validation failed.\nTemplate markers still present:\n' + unresolved.join('\n') + '\n\nAction: replace template markers with team-specific values and rerun validate --strict.');
+    await fail('Strict validation failed.\nTemplate markers still present:\n' + unresolved.join('\n') + '\n\nAction: replace template markers with team-specific values and rerun validate --strict.', 1, { command: 'validate', strict: true });
   }
 }
 
@@ -112,18 +117,18 @@ function parseWorkflow(text) {
   return phases;
 }
 
-function runWorkflow(name) {
-  if (!name) fail('Usage: agent-harness run <workflow> [--phase <name>] [--dry-run]');
+async function runWorkflow(name) {
+  if (!name) await fail('Usage: agent-harness run <workflow> [--phase <name>] [--dry-run]', 1, { command: 'run' });
   const p = path.join(cwd, 'harness', 'workflows', name + '.yaml');
-  if (!fs.existsSync(p)) fail('Workflow not found: harness/workflows/' + name + '.yaml');
+  if (!fs.existsSync(p)) await fail('Workflow not found: harness/workflows/' + name + '.yaml', 1, { command: 'run', workflow: name });
 
   const phaseFilter = getOption('--phase');
   const dryRun = hasFlag('--dry-run');
   const phases = parseWorkflow(read(path.join('harness', 'workflows', name + '.yaml')));
-  if (phases.length === 0) fail('Workflow parse failed. No phases found in ' + name + '.yaml');
+  if (phases.length === 0) await fail('Workflow parse failed. No phases found in ' + name + '.yaml', 1, { command: 'run', workflow: name });
 
   const selected = phaseFilter ? phases.filter((x) => x.name === phaseFilter) : phases;
-  if (selected.length === 0) fail('Requested phase not found: ' + phaseFilter);
+  if (selected.length === 0) await fail('Requested phase not found: ' + phaseFilter, 1, { command: 'run', workflow: name });
 
   console.log('Running workflow: ' + name + (dryRun ? ' (dry-run)' : ''));
   for (const phase of selected) {
@@ -134,7 +139,7 @@ function runWorkflow(name) {
         console.log('  command: ' + command);
         if (!dryRun) {
           try { execSync(command, { stdio: 'inherit', cwd }); }
-          catch { fail('Command failed in phase "' + phase.name + '": ' + command); }
+          catch { await fail('Command failed in phase "' + phase.name + '": ' + command, 1, { command: 'run', workflow: name, phase: phase.name }); }
         }
       }
     }
@@ -144,9 +149,10 @@ function runWorkflow(name) {
 }
 
 if (cmd === 'validate') {
-  baselineValidation();
-  if (hasFlag('--strict')) {
-    strictValidation();
+  await baselineValidation();
+  const strict = hasFlag('--strict');
+  if (strict) {
+    await strictValidation();
     console.log('Strict validation passed.');
     console.log('Contracts are customized and ready for team use.');
   } else {
@@ -154,11 +160,13 @@ if (cmd === 'validate') {
     console.log('Contracts present and schema checks complete.');
     console.log('Tip: run agent-harness validate --strict before production use.');
   }
+  await reportOutcome({ command: 'validate', status: 'pass', strict });
   process.exit(0);
 }
 
 if (cmd === 'run') {
-  runWorkflow(args[1]);
+  await runWorkflow(args[1]);
+  await reportOutcome({ command: 'run', status: 'pass', workflow: args[1] });
   process.exit(0);
 }
 
