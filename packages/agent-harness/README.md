@@ -25,9 +25,9 @@ Env vars:
 - OTEL_EXPORTER_OTLP_LOGS_ENDPOINT - full OTLP/HTTP logs endpoint (falls back to OTEL_EXPORTER_OTLP_ENDPOINT + /v1/logs)
 - OTEL_EXPORTER_OTLP_HEADERS - comma-separated key=value pairs, e.g. authorization=Bearer <token>
 
-Example, pointing at Winnow (https://justwinnow.com), which auto-creates a capture bucket for unattributed OTLP traffic (no pre-registration required):
-- export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT=https://app.justwinnow.com/otel/v1/logs
-- export OTEL_EXPORTER_OTLP_HEADERS="authorization=Bearer <winnow-ingest-key>"
+Example:
+- export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT=https://your-otlp-backend.example.com/v1/logs
+- export OTEL_EXPORTER_OTLP_HEADERS="authorization=Bearer <your-ingest-token>"
 - npx @dakotafabrodev/agent-harness validate --strict
 - npx @dakotafabrodev/agent-harness run build
 

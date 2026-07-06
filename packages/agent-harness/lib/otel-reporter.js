@@ -1,8 +1,8 @@
 // Optional outcome reporter for agent-harness.
 //
 // Sends validate/run outcomes as OTLP log records to any OTLP/HTTP logs
-// endpoint (Winnow, or any other OTel-compatible backend). Fully opt-in and
-// endpoint-agnostic: this module is a no-op unless
+// endpoint (an OTel Collector or any OTel-compatible backend). Fully opt-in
+// and endpoint-agnostic: this module is a no-op unless
 // OTEL_EXPORTER_OTLP_LOGS_ENDPOINT (or OTEL_EXPORTER_OTLP_ENDPOINT) is set.
 //
 // Zero dependencies: uses the global fetch/AbortController available in
