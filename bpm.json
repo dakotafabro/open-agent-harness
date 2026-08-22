@@ -1,0 +1,20 @@
+{
+  "name": "open-agent-harness",
+  "version": "0.1.0",
+  "type": "template",
+  "description": "Multi-agent testing harness - evaluate agent behavior across scenarios and configurations",
+  "entry": "README.md",
+  "scope": "project",
+  "token_cost": 0,
+  "keywords": ["testing", "harness", "evaluation", "multi-agent", "benchmark"],
+  "author": {
+    "name": "Dakota Fabro",
+    "github": "dakotafabro"
+  },
+  "license": "Apache-2.0",
+  "repository": "https://github.com/dakotafabro/open-agent-harness",
+  "agents": ["goose", "claude-code", "codex"],
+  "dependencies": [],
+  "conflicts": [],
+  "peers": ["rp-why"]
+}
