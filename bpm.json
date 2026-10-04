@@ -1,11 +1,11 @@
 {
   "name": "open-agent-harness",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "template",
   "description": "Multi-agent testing harness - evaluate agent behavior across scenarios and configurations",
   "entry": "README.md",
   "scope": "project",
-  "token_cost": 0,
+  "token_cost": 450,
   "keywords": ["testing", "harness", "evaluation", "multi-agent", "benchmark"],
   "author": {
     "name": "Dakota Fabro",
