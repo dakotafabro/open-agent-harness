@@ -30,3 +30,6 @@ Works with Goose.
 17. [Publishing](publishing.md)
 18. [Contributing](contributing.md)
 19. [5-Minute Demo Script](demo-script.md)
+16. [Goose Context and CLI Model](goose-context-and-cli-model.md)
+
+17. [Design Pillars](design-pillars.md)
