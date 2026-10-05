@@ -1,0 +1,32 @@
+{
+  "name": "@dakotafabrodev/agent-scaffold",
+  "version": "0.1.0",
+  "description": "Initialize any existing project repo with agent-first scaffolding: INDEX.md, AGENTS.md retrieval protocol, trust state, and memory config.",
+  "type": "module",
+  "bin": {
+    "agent-scaffold": "bin/agent-scaffold.js"
+  },
+  "keywords": [
+    "agent",
+    "agents-md",
+    "index-md",
+    "scaffold",
+    "retrieval",
+    "goose",
+    "claude",
+    "codex"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
