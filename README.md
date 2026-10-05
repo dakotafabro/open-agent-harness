@@ -60,3 +60,10 @@ Typical flow:
 1. Scaffold once with create-agent-harness
 2. Customize contracts
 3. Run validate and run commands with agent-harness
+## How the two packages work together
+- @dakotafabrodev/create-agent-harness scaffolds context contracts that Goose can read.
+- @dakotafabrodev/agent-harness validates and runs those contracts.
+
+This combines context quality with executable quality gates.
+
+- docs/goose-context-and-cli-model.md
