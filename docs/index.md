@@ -31,3 +31,8 @@ Works with Goose.
 18. [Publishing](publishing.md)
 19. [Contributing](contributing.md)
 20. [5-Minute Demo Script](demo-script.md)
+
+## Releases
+21. [Migration Policy](migration-policy.md)
+22. [Release Notes v0.1.1](release-notes-v0.1.1.md)
+23. [Release Announcement v0.1.1](release-announcement-v0.1.1.md)

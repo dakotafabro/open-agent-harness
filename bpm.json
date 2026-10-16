@@ -6,7 +6,7 @@
   "entry": "README.md",
   "scope": "project",
   "token_cost": 450,
-  "keywords": ["testing", "harness", "evaluation", "multi-agent", "benchmark"],
+  "keywords": ["scaffold", "agents-md", "goose", "collaboration", "validation", "workflow"],
   "author": {
     "name": "Dakota Fabro",
     "github": "dakotafabro"
