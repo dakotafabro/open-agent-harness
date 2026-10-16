@@ -23,6 +23,20 @@ const requiredFiles = [
   'harness/memory/reflection.md'
 ];
 
+function parseSectionEntries(text, section) {
+  const lines = text.split(/\r?\n/);
+  const start = lines.findIndex((l) => new RegExp('^' + section + ':\\s*$').test(l));
+  if (start === -1) return [];
+  const entries = [];
+  for (const line of lines.slice(start + 1)) {
+    if (/^\s*(#.*)?$/.test(line)) continue;
+    if (!/^\s+/.test(line)) break;
+    const m = line.match(/^\s+([A-Za-z0-9_.-]+):\s*(\S.*)$/);
+    if (m) entries.push({ key: m[1], value: m[2].trim() });
+  }
+  return entries;
+}
+
 function expectContains(text, pattern, label, failures) {
   if (!pattern.test(text)) failures.push('- ' + label);
 }
@@ -50,9 +64,11 @@ function baselineValidation() {
   expectContains(config, /^\s*reflection:\s*.+$/m, 'harness.config.yaml has artifacts.reflection', failures);
 
   expectContains(policy, /^machine_policy:\s*$/m, 'model-routing.yaml has machine_policy', failures);
-  expectContains(policy, /^\s*work:\s*.+$/m, 'model-routing.yaml has machine_policy.work', failures);
-  expectContains(policy, /^\s*personal:\s*.+$/m, 'model-routing.yaml has machine_policy.personal', failures);
-  expectContains(policy, /^\s*unknown:\s*.+$/m, 'model-routing.yaml has machine_policy.unknown', failures);
+  const policyEntries = parseSectionEntries(policy, 'machine_policy');
+  if (policyEntries.length === 0) failures.push('- model-routing.yaml machine_policy has at least one entry');
+  if (!policyEntries.some((e) => e.key === 'default' || e.key === 'unknown')) {
+    failures.push('- model-routing.yaml machine_policy has a fallback entry named default or unknown');
+  }
   expectContains(policy, /^task_defaults:\s*$/m, 'model-routing.yaml has task_defaults', failures);
   expectContains(policy, /^enforcement:\s*$/m, 'model-routing.yaml has enforcement', failures);
 
@@ -61,7 +77,7 @@ function baselineValidation() {
   expectContains(review, /^name:\s*review\s*$/m, 'review workflow has name: review', failures);
   expectContains(review, /^phases:\s*$/m, 'review workflow has phases', failures);
 
-  if (!agents.toLowerCase().includes('machine')) failures.push('- AGENTS.md includes machine routing policy');
+  if (!/machine|model routing/i.test(agents)) failures.push('- AGENTS.md includes a model routing policy');
 
   if (failures.length > 0) fail('Validation failed.\n' + failures.join('\n'));
 }
@@ -69,12 +85,14 @@ function baselineValidation() {
 function strictValidation() {
   const markers = [
     ['harness.config.yaml', 'replace-with-team-profile'],
+    ['harness/policies/model-routing.yaml', 'replace-with-your-default-model'],
     ['harness/policies/model-routing.yaml', 'replace-with-work-model'],
     ['harness/policies/model-routing.yaml', 'replace-with-personal-model'],
     ['harness/policies/model-routing.yaml', 'replace-with-unknown-fallback-model'],
     ['harness/workflows/build.yaml', 'replace-with-build-command'],
     ['harness/workflows/review.yaml', 'replace-with-review-command'],
     ['harness/context/project-context.md', 'replace-with-your-domain-constraints'],
+    ['AGENTS.md', 'replace-with-your-default-model'],
     ['AGENTS.md', 'replace-with-your-machine-routing-policy'],
     ['harness/memory/reflection.md', 'replace-with-a-specific-quality-pattern-you-observed']
   ];

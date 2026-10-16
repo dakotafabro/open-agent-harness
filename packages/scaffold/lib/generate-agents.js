@@ -7,23 +7,25 @@ const GUARDRAIL = `<!-- AGENT SCAFFOLD: Default instructions below ensure baseli
 
 `;
 
-export function generateAgentsMd(projectInfo, existingAgentsMd) {
+export function generateAgentsMd(projectInfo, existingAgentsMd, { includeRetrieval = false } = {}) {
   if (existingAgentsMd) {
-    return appendRetrievalProtocol(existingAgentsMd);
+    return includeRetrieval ? appendRetrievalProtocol(existingAgentsMd) : existingAgentsMd;
   }
 
   const lines = [GUARDRAIL];
   lines.push('# Agent Instructions\n');
   lines.push(`## Project: ${projectInfo.type} (${projectInfo.language})\n`);
 
-  lines.push('## Repository Retrieval Protocol\n');
-  lines.push('This repo uses INDEX.md files for structured agent navigation.\n');
-  lines.push('1. Read `INDEX.md` (root) for the directory map');
-  lines.push('2. Based on task context, scan relevant directory INDEX files');
-  lines.push('3. Open full documents only when the INDEX summary confirms relevance');
-  lines.push('4. Do not skip INDEX files - they prevent unnecessary full-doc reads');
-  lines.push('5. For cross-cutting work, scan ALL directory INDEX files (they are lightweight)');
-  lines.push('');
+  if (includeRetrieval) {
+    lines.push('## Repository Retrieval Protocol\n');
+    lines.push('This repo uses INDEX.md files for structured agent navigation.\n');
+    lines.push('1. Read `INDEX.md` (root) for the directory map');
+    lines.push('2. Based on task context, scan relevant directory INDEX files');
+    lines.push('3. Open full documents only when the INDEX summary confirms relevance');
+    lines.push('4. Do not skip INDEX files - they prevent unnecessary full-doc reads');
+    lines.push('5. For cross-cutting work, scan ALL directory INDEX files (they are lightweight)');
+    lines.push('');
+  }
 
   lines.push('## Conventions\n');
   lines.push('<!-- Add your project-specific conventions below -->');
