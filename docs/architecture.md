@@ -11,13 +11,13 @@ Application
 ## Contracts in v0.1
 - AGENTS.md for routing and safety defaults
 - harness.config.yaml for runtime and validation profile
-- policies/model-routing.yaml for machine-aware model selection
+- policies/model-routing.yaml for model selection, with a default fallback and optional named profiles
 - workflows/*.yaml for phase structure and gates
 - memory/*.md for reflection and longitudinal learning
 
 ## Execution lifecycle
 1. load profile
-2. resolve machine policy
+2. resolve the model routing policy
 3. select workflow
 4. execute phase-by-phase
 5. validate gates

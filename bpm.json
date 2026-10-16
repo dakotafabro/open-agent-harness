@@ -2,7 +2,7 @@
   "name": "open-agent-harness",
   "version": "0.1.1",
   "type": "template",
-  "description": "Multi-agent testing harness - evaluate agent behavior across scenarios and configurations",
+  "description": "Growth-first framework for human and AI collaboration: a project scaffold plus a CLI that validates and runs collaboration contracts, works with Goose",
   "entry": "README.md",
   "scope": "project",
   "token_cost": 450,
@@ -16,5 +16,5 @@
   "agents": ["goose", "claude-code", "codex"],
   "dependencies": [],
   "conflicts": [],
-  "peers": ["rp-why"]
+  "peers": []
 }

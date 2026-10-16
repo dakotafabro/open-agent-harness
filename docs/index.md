@@ -9,27 +9,25 @@ Works with Goose.
 2. [Core Concepts](concepts.md)
 3. [Architecture](architecture.md)
 4. [Maturity Model](maturity-model.md)
+5. [Design Pillars](design-pillars.md)
 
 ## Build and run path
-5. [CLI Reference](cli-reference.md)
-6. [Team Adoption Guide](team-adoption.md)
-7. [Cost and Quality Strategy](cost-quality-strategy.md)
-8. [Troubleshooting](troubleshooting.md)
-9. [FAQ](faq.md)
+6. [CLI Reference](cli-reference.md)
+7. [Team Adoption Guide](team-adoption.md)
+8. [Cost and Quality Strategy](cost-quality-strategy.md)
+9. [Troubleshooting](troubleshooting.md)
+10. [FAQ](faq.md)
 
-## Evidence and submission path
-10. [Evidence Pack](evidence-pack.md)
-11. [Pilot Metrics Template](pilot-metrics-template.md)
-12. [AAIF Submission Draft](aaif-submission-draft.md)
+## Evidence path
+11. [Evidence Pack](evidence-pack.md)
+12. [Pilot Metrics Template](pilot-metrics-template.md)
 13. [Launch Draft](launch.md)
 
 ## Ecosystem and contribution path
 14. [Framework vs Profile](framework-vs-profile.md)
 15. [Goose Integration](goose-integration.md)
-16. [AAIF Alignment](aaif-alignment.md)
-17. [Publishing](publishing.md)
-18. [Contributing](contributing.md)
-19. [5-Minute Demo Script](demo-script.md)
 16. [Goose Context and CLI Model](goose-context-and-cli-model.md)
-
-17. [Design Pillars](design-pillars.md)
+17. [AAIF Alignment](aaif-alignment.md)
+18. [Publishing](publishing.md)
+19. [Contributing](contributing.md)
+20. [5-Minute Demo Script](demo-script.md)

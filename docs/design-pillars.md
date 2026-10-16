@@ -1,7 +1,5 @@
 # Design Pillars
 
-## Inferred from aaif.dakotafabro.dev
-
 1. Clarity first
 - Fast orientation in the first screen
 - Clear problem framing and clear install path

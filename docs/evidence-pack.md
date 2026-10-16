@@ -1,6 +1,6 @@
 # Evidence Pack for Quality and Bonus Scoring
 
-Use this document to prepare review-ready evidence for ambassador submissions and partner evaluations.
+Use this document to prepare review-ready evidence for partner evaluations and adoption reviews.
 
 ## Goal
 Demonstrate that Open Agent Harness is not only publishable, but measurably useful.
@@ -33,7 +33,7 @@ Demonstrate that Open Agent Harness is not only publishable, but measurably usef
 - references to community adoption or feedback
 
 ## Reviewer-ready bundle checklist
-Include these links in one submission note:
+Include these links in one evidence note:
 - repository root
 - npm package pages
 - quickstart
