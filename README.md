@@ -43,6 +43,9 @@ Optional create aliases:
 - docs/launch.md
 - docs/publishing.md
 - docs/demo-script.md
+- docs/migration-policy.md
+- docs/release-notes-v0.1.1.md
+- docs/release-announcement-v0.1.1.md
 
 ## Design boundary
 The framework provides a reusable frame. It does not ship a personal workflow. Teams define their own profile, tools, and conventions.
